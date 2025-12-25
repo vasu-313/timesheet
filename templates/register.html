@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="box">
+    <div  class="full-box"  >
+        <h2 class="title">Create Account</h2>
+
+        <div class="sub-box">
+            <form class="all-inputs" method='POST'>
+                <input class="each-input" type="text"  name="name" placeholder="Name" required >
+                <input class="each-input" type="email"  name="email" placeholder="Email" required >
+                <input class="each-input" type="password" name="password" placeholder="Password" required>
+                <button  class="submit-btn" type="submit" >Sign Up</button>
+                <p class="already-para" >Already have an Account? <a href="/login"><span class="login-link" >Login</span></a> </p>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

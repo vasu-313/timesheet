@@ -1,0 +1,262 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Makes the font look smoother */
+    background-color: #F3F4F6;
+}
+
+.navbar {
+    width: 100%;
+    height: 70px;
+    background-color: #1268b3;
+}
+
+.logo {
+    color: white;
+    padding: 21.5px;
+}
+
+.logo-a {
+    text-decoration: none;
+}
+
+.box {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+    align-content: center;
+}
+
+.full-box {
+    margin-bottom: 200px;
+}
+
+.title {
+    padding: 30px;
+}
+
+.sub-box {
+    display: flex;
+    justify-content: center;
+}
+
+.all-inputs {
+    width: 250px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    /* border: solid 2px black; */
+}
+
+.each-input {
+    border-radius: 5px;
+    height: 30px;
+    width: auto;
+    box-sizing: border-box;
+    padding: 0px 12px;
+    transition: all 0.2s ease;
+
+}
+
+.each-input:focus {
+    border: none;
+    padding: 0px 12px;
+}
+
+.each-input::placeholder {
+    padding: 0px 3px;
+
+}
+
+.submit-btn {
+    color: #FFFFFF;
+    background-color: #1268b3;
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 0px 0px 5px 0px;
+}
+
+.login-link {
+    font-weight: 600;
+    color: #1268b3;
+
+}
+
+.login-links {
+    color: #1268b3;
+}
+
+.already-para {
+    color: #1268b3;
+}
+
+.forget-password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.forget-password a {
+    color: #1268b3;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.box-remember {
+    display: flex;
+    align-items: center;
+}
+
+.remember {
+    font-size: 13px;
+    padding: 5px;
+}
+
+.re-checkbox {
+    padding: 2px;
+}
+
+
+
+/* home page css */
+
+nav.user-navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #1268b3;
+    color: #FFFFFF;
+}
+
+.u-logo {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.nav-links {
+    display: flex;
+    gap: 50px;
+}
+
+.logout-btn a {
+    background-color: #FFFFFF;
+    color: #1268b3;
+    text-decoration: none;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+
+
+/* navbar2 */
+.navbar2  {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #FFFFFF;
+    color: #1268b3;
+    
+}
+
+.nav-items-a {
+    text-decoration: none;
+    color: #1268b3;
+}
+
+
+
+.nav-items {
+    display: flex;
+    gap: 50px;
+}
+
+.add-task button {
+    background-color: #1268b3;
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+/* daily nav*/
+nav.daily-nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #C1E0F5;
+    color: #1268b3;
+    
+}
+
+.daily-dates {
+    display: flex;
+    gap: 2px;
+}
+
+.add-task-btn {
+    background-color: #1268b3;
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+/* table */
+
+.task-table {
+    width: 100%;
+    
+}
+
+.task-data {
+    text-align: center;
+}
+
+/* form */
+
+.modal {
+  /* display: none; */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  width: 500px;
+  margin: 80px auto;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.close-btn {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.description-box {
+  width: 100%;
+  padding: 8px;
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

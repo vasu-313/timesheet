@@ -1,0 +1,28 @@
+<div>
+        <nav  class="user-navbar" >
+            <a  class="u-logo" href="/home/{{name}}"><h2 class="u-title" >TIMESHEET</h2></a>
+            <div  class="nav-links" >
+                <h2  class="user-name" >| User: {{ name | capitalize }} |</h2>
+                <button class="logout-btn" ><a href="/login">Logout</a></button>
+            </div>
+        </nav>
+
+
+        <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const d = document.getElementById('daily-activity');
+    const m = document.getElementById('mysheets');
+
+    d.addEventListener('click', () => {
+        d.style.textDecoration = 'underline';
+        m.style.textDecoration = 'none';
+    });
+
+    m.addEventListener('click', () => {
+        m.style.textDecoration = 'underline';
+        d.style.textDecoration = 'none';
+    });
+});
+</script>
+
+</div>

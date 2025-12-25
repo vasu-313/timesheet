@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMESHEET</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    {% include "user-navbar.html" %}
+
+    {% include "navbar2.html" %}
+    
+
+    <main  class="main-content" >
+        {% include "daily.html" %}
+    </main>
+
+    {% include "add-task.html" %}
+
+    <script>
+        const input = document.getElementById("dateInput");
+        const dayName = document.getElementById("day-name");
+
+        input.addEventListener("change", () => {
+            const date = new Date(input.value);
+            const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            dayName.textContent = days[date.getDay()];
+        });
+    </script>
+
+</body>
+</html>

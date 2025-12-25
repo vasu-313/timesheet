@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="box">
+    <div class="full-box">
+        <h2 class="title">Login</h2>
+
+        <div class="sub-box">
+            <form class="all-inputs" method="POST">
+                <input class="each-input"  name="email" type="email" placeholder="Email" required >
+                <input class="each-input" name="password" type="password" placeholder="Password"  required>
+                <div >
+                    <button class="submit-btn" type="submit">Login</button>
+                    <div  class="forget-password" >
+                        <a href=""> forget password ?</a>
+                        <div class="box-remember" >
+                            <input class="re-checkbox" type="checkbox" ><span  class="remember" >Remember Me</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-links" >
+                    <p>Don't have an account?</p>
+                    <a href="/">
+                        <p class="login-link">Create Account</p>
+                    </a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
