@@ -232,7 +232,7 @@ nav.daily-nav {
 /* form */
 
 .modal {
-  /* display: none; */
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
@@ -259,4 +259,9 @@ nav.daily-nav {
   resize: vertical;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+
+task-form {
+    display: flex;
 }
