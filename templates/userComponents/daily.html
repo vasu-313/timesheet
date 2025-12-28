@@ -1,0 +1,71 @@
+<div>
+    <nav class="daily-nav">
+        <div class="daily-dates">
+            <h4>Task List:</h4>
+            <h4 id="day-name">None</h4>
+
+            <input id="dateInput1" type="date" class="date-box" value=date required>
+        </div>
+
+        <button class="add-task-btn">Add Task</button>
+    </nav>
+
+
+    <div class="task-table-container">
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th class="task-head1">Task Name</th>
+                    <th class="task-head2">Actual Work (hrs)</th>
+                    <th class="task-head3">OverTime(Hrs)</th>
+                    <th class="task-head4">Description</th>
+                    <th class="task-head5">Actions</th>
+                </tr>
+            </thead>
+            {% if data and data|length > 0 %}
+            <tbody>
+                {% for task in data %}
+
+                <tr>
+                    <td class="task-data1">{{ task.Projects }}</td>
+                    <td class="task-data2">{{ task.WorkTime }}</td>
+                    <td class="task-data3">{{ task.OverTime or 0 }}</td>
+                    <td class="task-data4">{{ task.TaskDescription }}</td>
+                    <td class="task-data5">
+                        <div  class="action-btns" >
+
+        
+                                <button type="submit" class="edit-btn"  onclick="openEditModal({{ task.TaskId }})">
+                                    <i class='bxr  bx-edit'></i>
+                                </button>
+                            
+                            <form action="{{ url_for('delete_task_route', task_id=task.TaskId) }}" method="POST">
+                                <button type="submit" class="edit-btn"><i class='bxr  bx-trash'></i></button>
+                            </form>
+
+
+                            
+                                
+                            
+                        </div>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+            {% else %}
+
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <p class="empty">No tasks yet.</p>
+                    </td>
+                </tr>
+            </tbody>
+
+            {% endif %}
+        </table>
+
+
+
+    </div>

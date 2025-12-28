@@ -1,0 +1,60 @@
+<div id="task-form" class="task-form-box">
+    <div class="task-form-content">
+        <span class="close-btn">&times;</span>
+
+        <form class="main-form" method="POST">
+            <div>
+                <label for="date-lebel">Date:</label>
+                <input id="dateInput" type="date" class="date-box" name="date"  value=date>
+            </div>
+
+            <div>
+                <label for="select-project">Select Project:</label>
+                <select id="select-project" class="project-type" name="project" required>
+                    <option value="912 - Receiving training and study for trainees">912 - Receiving training and study for trainees</option>
+                    <option value="website">Website</option>
+                    <option value="mobile_app">Mobile App</option>
+                </select>
+
+            </div>
+
+            <div class="task-types">
+                <label><input type="radio" name="TaskType" value="General Tasks" > General Tasks</label>
+                <label><input type="radio" name="TaskType" value="MPP Tasks" > MPP Tasks</label>
+                <label><input type="radio" name="TaskType" value="Assigned Tasks" > Assigned Tasks</label>
+                <label><input type="radio" name="TaskType"  value="Issues Assigned" > Issues Assigned</label>
+            </div>
+
+            <div>
+                <label for="select-task">Select Task:</label>
+                <select id="select-task" class="project-type" name="task" >
+                    <option value="215 - Training">215 - Training</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="select-task">Select Activity:</label>
+                <select id="select-task" class="project-type" name="activity" >
+                    <option value="Development">Development</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="actual-work">Actual Work (hrs):</label>
+                <input id="actual-work" type="number" step="0.1" min="0" name="time"  required>
+                <span class="star" >*</span>
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" class="description-box" rows="3" name="description"
+                    placeholder="Enter work details (e.g., Java, Python, testing)..."></textarea>
+
+            </div>
+            <button class="task-submit-btn" type="submit">Save</button>
+        </form>
+
+
+
+    </div>
+</div>

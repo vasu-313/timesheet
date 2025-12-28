@@ -1,0 +1,35 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date and Day Auto</title>
+</head>
+<body>
+
+    <h3>Select Date</h3>
+
+    <input type="date" id="dateInput">
+
+    <p id="dayText"></p>
+
+    <script>
+        dayForDisplay = document.getElementById("dayText");
+        dateByDefault =  document.getElementById("dateInput");
+        const today = new Date();
+
+        // Set date input value (YYYY-MM-DD)
+        const formattedDate = today.toISOString().split('T')[0];
+        dateByDefault.value = formattedDate;
+
+        // Day names array
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        // Get day name
+        const dayName = days[today.getDay()];
+
+        // Show day in <p>
+        dayForDisplay.innerText = "Today is: " + dayName;
+    </script>
+
+</body>
+</html> {% endcomment %}

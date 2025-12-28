@@ -10,12 +10,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    {% include "navbar.html" %}
+    {% include "userComponents/user-navbar.html" %}
 
-    <main>
-        {% block content %} {% endblock %}
-    </main>
+     {% include "userComponents/navbar2.html" %}
+  
+    
+
+
+
+
+
+
+<script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 </html>

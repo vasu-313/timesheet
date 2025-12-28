@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMESHEET</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    {% include "userComponents/user-navbar.html" %}
+
+    {% include "userComponents/navbar2.html" %}
+    
+
+    <main  class="main-content" >
+        {% include "userComponents/daily.html" %}
+    </main>
+
+    {% include "userComponents/form-task.html" %}
+
+
+
+
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+    const dayForDisplay = document.getElementById("day-name");
+    const dateByDefault = document.getElementById("dateInput1");
+    const formDate = document.getElementById("dateInput");
+
+    // Set today's date by default
+    const today = new Date();
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    const formattedDate = today.toISOString().split("T")[0];
+
+    dateByDefault.value = formattedDate;
+    formDate.value = formattedDate;
+
+    // Function to update day name
+    function updateDayName(dateValue) {
+        const dateObj = new Date(dateValue);
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        dayForDisplay.innerText = days[dateObj.getDay()];
+    }
+
+    // Set day name on load
+    updateDayName(formattedDate);
+
+    // Update day name when date changes
+    dateByDefault.addEventListener("change", function () {
+        updateDayName(this.value);
+        formDate.value = this.value; 
+    });
+
+});
+
+
+
+        
+        const addTaskBtn = document.querySelector('.add-task-btn');
+        const modal = document.getElementById('task-form');
+        const closeBtn = document.querySelector('.close-btn');
+
+        addTaskBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+            document.querySelector('.main-form').reset(); 
+            document.querySelector('.main-form').action = '/home';
+        });
+
+        closeBtn.addEventListener('click', () => {
+           modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+        });
+
+
+
+        function openEditModal(taskId) {
+    // Fetch task data from server or from template variables
+    const task = {{ data | tojson }}.find(t => t.TaskId === taskId);
+
+    if (!task) return;
+
+    // Populate form fields
+    document.querySelector('input[name="date"]').value = task.TaskDate || '';
+    document.querySelector('select[name="project"]').value = task.Projects || '';
+    document.querySelector('select[name="task"]').value = task.Task || '';
+    document.querySelector('select[name="activity"]').value = task.Activity || '';
+    document.querySelector('input[name="time"]').value = task.WorkTime || '';
+    document.querySelector('textarea[name="description"]').value = task.TaskDescription || '';
+
+    // Update form action to use correct task_id
+    document.querySelector('.main-form').action = `/update-task/${taskId}`;
+
+    // Show modal
+    modal.style.display = 'block';
+}
+
+</script>
+
+</body>
+</html>
