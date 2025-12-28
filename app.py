@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,session, url_for,jsonify
+from flask import Flask, render_template, request, redirect,session, url_for,jsonify,flash
 import pyodbc
 import bcrypt
 
@@ -68,14 +68,15 @@ def login():
         conn.close()
 
         if not row:
-            return "User not found", 404
+            flash("User not found", "error")   # 🔔 added
+            return redirect(url_for("login"))
 
         user_id = row[0]
         name = row[1]
         stored_hash = row[3]
         role = row[4]
 
-        #  PASSWORD CHECK
+        # PASSWORD CHECK
         try:
             is_valid = bcrypt.checkpw(
                 password.encode("utf-8"),
@@ -86,19 +87,22 @@ def login():
             is_valid = password == stored_hash
 
         if not is_valid:
-            return "Invalid password", 401
+            flash("Invalid password", "error")   # 🔔 added
+            return redirect(url_for("login"))
 
-        # ✅ LOGIN SUCCESS
+        # LOGIN SUCCESS
         session["user_id"] = user_id
         session["user_name"] = name
         session["role"] = role
 
+
         if role.lower() == "admin":
-            return redirect(url_for("admin_dashboard"))
+            return redirect(url_for("admin"))
         else:
             return redirect(url_for("home"))
 
     return render_template("auth/login.html")
+
 
 
 
@@ -254,20 +258,21 @@ def logout():
     return redirect('/login')
 
 
-# example for date update 
-# @app.route("/example")
-# def example_for_date():
-#     return render_template("date-example.html")
+
 
 
 # admin page 
 @app.route("/admin")
-def admin_dashboard():
+def admin():
     user_id, name = get_logged_in_user()
     return render_template("adminPages/admin-home.html", name=name)
 
 
 
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+
+
 

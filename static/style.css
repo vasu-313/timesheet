@@ -203,6 +203,7 @@ nav.user-navbar {
 
 /* daily nav*/
 nav.daily-nav {
+    margin: 0px 0 15px 0px;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -334,7 +335,8 @@ nav.daily-nav {
 }
 
 
-
+.success { color: green; }
+.error { color: red; }
 
 
 

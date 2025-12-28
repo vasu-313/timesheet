@@ -1,8 +1,0 @@
-{
-    "github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled": true,
-    "github.copilot.nextEditSuggestions.allowWhitespaceOnlyChanges": true,
-    "emmet.showSuggestionsAsSnippets": true,
-    "html.suggest.hideEndTagSuggestions": true,
-    "github.copilot.nextEditSuggestions.enabled": true,
-    "terminal.integrated.suggest.insertTrailingSpace": true
-}
