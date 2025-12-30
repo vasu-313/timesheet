@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, url_for, render_template, request
+from flask import Flask, flash, redirect, url_for, render_template, request, session
 
 app = Flask(__name__)
 app.secret_key = "secret123"   # REQUIRED for flash
@@ -16,6 +16,8 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
+        session["username"] = username
+
         if username != DUMMY_USERNAME:
             flash("Username is wrong", "error")
             return redirect(url_for("login"))
@@ -32,7 +34,8 @@ def login():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("examples/dashboard.html")
+    name = session.get("username")
+    return render_template("examples/dashboard.html", name=name)
 
 
 
@@ -44,5 +47,9 @@ def example_for_date():
 
 if __name__ == "__main__":
     app.run(debug=True, port=3000)
+
+
+
+
 
 

@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect,session, url_for,jsonify,flash
+from flask import Flask, render_template, request, redirect,session, url_for,abort,flash
 import pyodbc
 import bcrypt
+from functools import wraps
 
 app = Flask(__name__)
 
@@ -148,8 +149,21 @@ def get_logged_in_user():
 
     return user_id, user_name
 
+# this is for user can only access home page 
+def home_required(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if "role" not in session:
+            return redirect(url_for("login"))
+
+        if session.get("role") != "user":
+            return abort(403)
+
+        return func(*args, **kwargs)
+    return wrapper
 
 @app.route("/home", methods=["GET", "POST"])
+@home_required
 def home():
     user_id, name = get_logged_in_user()
     if not user_id:
@@ -257,14 +271,25 @@ def logout():
     session.clear()
     return redirect('/login')
 
+# this is for admin can only access admin page 
+def admin_required(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if "role" not in session:
+            return redirect(url_for("login"))
 
+        if session.get("role") != "admin":
+            return abort(403)
 
+        return func(*args, **kwargs)
+    return wrapper
 
 
 # admin page 
 @app.route("/admin")
+@admin_required
 def admin():
-    user_id, name = get_logged_in_user()
+    name = session.get("user_name")
     return render_template("adminPages/admin-home.html", name=name)
 
 
@@ -272,6 +297,8 @@ def admin():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+
 
 
 
